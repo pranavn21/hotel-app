@@ -38,10 +38,11 @@ export class ReservationFormComponent implements OnInit {
 
     if(id){
       // Update
-      let reservation = this.reservationService.getReservation(id)
+      this.reservationService.getReservation(id).subscribe(reservation => {
+        if(reservation)
+          this.reservationForm.patchValue(reservation) // if you find a value for the id, then fill/"patch" the value. otherwise, show the blank form  
+      })
 
-      if(reservation)
-        this.reservationForm.patchValue(reservation) // if you find a value for the id, then fill/"patch" the value. otherwise, show the blank form
     }
   }
 
