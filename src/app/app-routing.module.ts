@@ -8,6 +8,7 @@ const routes: Routes = [
     {path:"", component: HomeComponent},
     {path:"list", component: ReservationListComponent},
     {path:"new", component: ReservationFormComponent},
+    {path:"edit/:id", component:ReservationFormComponent} // we need to edit an existing item, so we need to provide an id
 
 ];
 
