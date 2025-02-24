@@ -21,21 +21,19 @@ constructor(private http: HttpClient) {
   }
 
   getReservation(id: string): Observable<Reservation> {
-    return this.http.get<Reservation>(this.apiUrl + "/reservations/"+id);
+    return this.http.get<Reservation>(this.apiUrl + "/reservation/"+id);
   }
 
-  addReservation(reservation: Reservation): void {
-    reservation.id = Date.now().toString();
-    this.reservations.push(reservation);
+  addReservation(reservation: Reservation): Observable<void> {
+    return this.http.post<void>(this.apiUrl + "/reservation", reservation);
   }
 
-  deleteReservation(id: string): void{
-    let index = this.reservations.findIndex(res => res.id === id);
-    this.reservations.splice(index,1) // splice at index and remove one element, remove that element at index
+  deleteReservation(id: string): Observable<void>{
+    return this.http.delete<void>(this.apiUrl + "/reservation/"+id);
   }
 
-  updateReservation(id:string, updatedReservation: Reservation): void{
-    let index = this.reservations.findIndex(res => res.id === id);
-    this.reservations[index] = updatedReservation;
+  updateReservation(id:string, updatedReservation: Reservation): Observable<void>{
+    return this.http.put<void>(this.apiUrl + "/reservation/" +id, updatedReservation);
+
   }
 }

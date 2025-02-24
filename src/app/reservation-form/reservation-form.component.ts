@@ -55,10 +55,14 @@ export class ReservationFormComponent implements OnInit {
 
       if(id){
         // Update
-        this.reservationService.updateReservation(id, reservation)
+        this.reservationService.updateReservation(id, reservation).subscribe(() => {
+          console.log("Update request processed.")
+        })
       }  else{
         // New
-        this.reservationService.addReservation(reservation)
+        this.reservationService.addReservation(reservation).subscribe(() => {
+          console.log("Create request processed.")
+        })
       }
 
       this.router.navigate(['/list']) // we want the user to navigate to /list

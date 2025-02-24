@@ -4,7 +4,7 @@
     <div class="row mb-3">
         <div class="col">
             <label class="form-label">Check-In Date:</label>
-            <input class="form-control" type="date" formControlName="checkInDate">
+            <input class="form-control" formControlName="checkInDate">
             <small class="text-danger" *ngIf = "reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched"> <!--If the user has touched the entry-->
                 Check-In Date is required.
             </small>
@@ -12,7 +12,7 @@
     
         <div class="col">
                 <label class="form-label">Check-Out Date:</label>
-                <input  class="form-control" type="date" formControlName="checkOutDate">
+                <input  class="form-control" formControlName="checkOutDate">
                 <small class="text-danger" *ngIf = "reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched"> <!--If the user has touched the entry-->
                     Check-Out Date is required.
                 </small>     
