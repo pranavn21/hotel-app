@@ -2,22 +2,37 @@
     <div>
         <label>Check-In Date:</label>
         <input type="date" formControlName="checkInDate">
+        <div *ngIf = "reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched"> <!--If the user has touched the entry-->
+            Check-In Date is required.
+        </div>
     </div>
     <div>
         <label>Check-Out Date:</label>
         <input type="date" formControlName="checkOutDate">
+        <div *ngIf = "reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched"> <!--If the user has touched the entry-->
+            Check-Out Date is required.
+        </div>
     </div>
     <div>
         <label>Guest Name:</label>
         <input type="email" formControlName="guestName">
+        <div *ngIf = "reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched"> <!--If the user has touched the entry-->
+            Guest Name is required.
+        </div>
     </div>
     <div>
         <label>Guest Email:</label>
         <input type="email" formControlName="guestEmail">
+        <div *ngIf = "reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched"> <!--If the user has touched the entry-->
+            Guest Email is required.
+        </div>
     </div>
     <div>
         <label>Room Number:</label>
         <input type="number" formControlName="roomNumber">
+        <div *ngIf = "reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched"> <!--If the user has touched the entry-->
+            Room Number is required.
+        </div>
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit" [disabled]="reservationForm.invalid">Submit</button> <!--Disable the button when it's invalid--> 
 </form>
